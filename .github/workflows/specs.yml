@@ -15,7 +15,7 @@ jobs:
       - shell: bash
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-        run: touch actionmap/config/master.key && echo "$RAILS_MASTER_KEY" > actionmap/config/master.key
+        run: touch master.key && echo "$RAILS_MASTER_KEY" > master.key
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
