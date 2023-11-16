@@ -1,0 +1,24 @@
+project:
+  name: 'CS169-fa23-27'
+  owner: 'fa23'
+  teamId: '27'
+  identities: {}
+  notifications:
+    email: 'huhsu1@berkeley.edu'
+  members:
+    member1:
+      name: 'Sung Wan'
+      surname: 'Huh' 
+      githubUsername: 'huhsu1'
+    member2:
+      name: 'Bill'
+      surname: 'Hu' 
+      githubUsername: 'hubi0111'
+    member3:
+      name: 'Adrian'
+      surname: 'Yumul' 
+      githubUsername: 'adrianyumul'
+    member4:
+      name: 'Kevin'
+      surname: 'Zhu' 
+      githubUsername: 'KEV-INZHU'
