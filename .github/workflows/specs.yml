@@ -5,12 +5,6 @@ on:
   - workflow_dispatch
 
 jobs:
-- shell: bash
-  env:
-    RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-  run:
-    touch config/master.key
-    echo "$SUPER_SECRET" > config/master.key
   build:
     runs-on: '${{ matrix.os }}'
     strategy:
@@ -21,6 +15,9 @@ jobs:
       - shell: bash
         env:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+        run:
+          touch config/master.key
+          echo "$RAILS_MASTER_KEY" > config/master.key
       - name: Cache multiple paths
         uses: actions/cache@v2
         with:
