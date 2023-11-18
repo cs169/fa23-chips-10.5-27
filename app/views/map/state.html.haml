@@ -29,13 +29,14 @@
                                         %th View
                                 %tbody
                                     - @state.counties.each_with_index do |county, index|
+                                        - address = `${county.name},  ${@state.symbol}`
                                         %tr
                                             %td= index + 1
                                             %td= county.name
                                             %td= county.std_fips_code
                                             %td
                                                 = link_to 'View', county_path(state_symbol: @state.symbol,
-                                                std_fips_code: county.std_fips_code),
+                                                std_fips_code: county.std_fips_code, address: address),
                                                 class: 'btn btn-primary'
 #actionmap-info-box
 #actionmap-info-container{ 'data-counties': @county_details.to_json, 'data-state': @state.to_json,
