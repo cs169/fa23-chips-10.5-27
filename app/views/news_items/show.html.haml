@@ -1,6 +1,9 @@
 .row.mt-2
     .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
-        %h3.text-center= @news_item.title
+        %h3.text-center
+            %a{ href: representative_path(@news_item.representative) }= @news_item.representative.name
+            %br
+            = @news_item.title
         .card-body
             .card-text
                 %dl.row
