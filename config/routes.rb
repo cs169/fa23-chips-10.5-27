@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/auth/github/callback', to: 'login#github', as: :github_callback
     get '/logout' => 'login#logout', :as => :logout
     get '/user/profile', to: 'user#profile', as: :user_profile
+    get '/representatives/:id', to: 'representatives#show', as: :representative
+
 
     root to: 'map#index', as: 'root'
     get '/state/:state_symbol' => 'map#state', :as => :state_map
