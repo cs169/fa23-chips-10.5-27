@@ -6,18 +6,20 @@ RSpec.describe Representative, type: :model do
   dummy_result = OpenStruct.new(
     { offices:   [OpenStruct.new({ name:             'Title1',
                                    official_indices: [0] }),
-                  OpenStruct.new({ name:             'Title1',
+                  OpenStruct.new({ name:             'Title2',
                                    official_indices: [1] })],
-      officials: [OpenStruct.new({ name: 'John Doe' }),
-                  OpenStruct.new({ name: 'John Doe' })] }
+      officials: [OpenStruct.new({ name: 'John Doe', title: 'Title1' }),
+                  OpenStruct.new({ name: 'John Doe2', title: 'Title2' })] }
   )
 
   it "doesn't add duplicates" do
-    described_class.civic_api_to_representative_params(dummy_result)
-    expect(described_class.count).to eq(1)
+    described_class.create(name: 'John Doe', title: 'Title1')
+    described_class.create(name: 'John Doe2', title: 'Title2')
+    expect { described_class.civic_api_to_representative_params(dummy_result) }.not_to change(described_class, :count)
   end
 
-  it 'returns right reps' do
-    expect(described_class.civic_api_to_representative_params(dummy_result).length).to eq(1)
+  it 'adds new people' do
+    described_class.create(name: 'John Doe3', title: 'Title3')
+    expect { described_class.civic_api_to_representative_params(dummy_result) }.to change(described_class, :count).by(2)
   end
 end
