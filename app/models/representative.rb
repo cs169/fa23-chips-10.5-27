@@ -17,13 +17,12 @@ class Representative < ApplicationRecord
       end
 
       rep = Representative.find_by(name: official.name, title: title_temp)
-      next unless rep.nil?
-
-      party = official.party if official.party
-      photo_url = official.photo_url if official.photo_url
-      full_address = extract_full_address(official.address)
-      rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, title: title_temp,
-contact_address: full_address, political_party: party, photo_url: photo_url })
+      if rep.nil?
+        party = official.party if official.party
+        photo_url = official.photo_url if official.photo_url
+        rep = Representative.create!({ name: official.name, ocdid: ocdid_temp, title: title_temp,
+  contact_address: extract_full_address(official.address), political_party: party, photo_url: photo_url })
+      end
       reps.push(rep)
     end
     reps
