@@ -1,0 +1,45 @@
+.container-fluid
+    .row
+        .col-md-8
+            .table-responsive-md.pt-5
+                %table.table.table-striped.table-hover#events
+                    %caption Table of Campaigns
+                    %thead.thead-dark
+                        %tr
+                            %th Name
+                            %th Party
+                            %th State
+                            %th District
+                            %th Committee
+                            %th Status
+                            %th Total From Individuals
+                            %th Total From PACs
+                            %th Total Contributions
+                            %th Candidate Loans
+                            %th Total Disbursements
+                            %th Begin Cash
+                            %th End Cash
+                            %th Total Refunds
+                            %th Debts Owed
+                            %th Date Coverage From
+                            %th Date Coverage To
+                    %tbody
+                        - @campaigns.each do |campaign|
+                            %tr
+                                %td= campaign['name'] || 'N/A'
+                                %td= campaign['party'] || 'N/A'
+                                %td= campaign['state']&.split('/')&.[](-1)&.gsub('.json', '') || 'N/A'
+                                %td= campaign['district'] || 'N/A'
+                                %td= campaign['committee']&.split('/')&.[](-1)&.gsub('.json', '') || 'N/A'
+                                %td= campaign['status'] || 'N/A'
+                                %td= campaign['total_from_individuals'] || 'N/A'
+                                %td= campaign['total_from_pacs'] || 'N/A'
+                                %td= campaign['total_contributions'] || 'N/A'
+                                %td= campaign['candidate_loans'] || 'N/A'
+                                %td= campaign['total_disbursements'] || 'N/A'
+                                %td= campaign['begin_cash'] || 'N/A'
+                                %td= campaign['end_cash'] || 'N/A'
+                                %td= campaign['total_refunds'] || 'N/A'
+                                %td= campaign['debts_owed'] || 'N/A'
+                                %td= campaign['date_coverage_from'] || 'N/A'
+                                %td= campaign['date_coverage_to'] || 'N/A'

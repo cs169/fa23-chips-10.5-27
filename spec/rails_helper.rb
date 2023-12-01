@@ -3,6 +3,8 @@
 # See: https://github.com/codecov/example-ruby
 
 require 'simplecov'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 SimpleCov.start 'rails' do
   add_filter 'lib'
 end

@@ -2,6 +2,12 @@
 
 require 'rails_helper'
 
+FactoryBot.define do
+  factory :representative do
+    name { 'John Doe' }
+  end
+end
+
 RSpec.describe Representative, type: :model do
   dummy_result = OpenStruct.new(
     { offices:   [OpenStruct.new({ name:             'Title1',
