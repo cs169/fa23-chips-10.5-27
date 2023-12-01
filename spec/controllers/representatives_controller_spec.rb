@@ -3,13 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe RepresentativesController, type: :controller do
+  let!(:representative) do
+    Representative.create!(name: 'John Doe')
+  end
+
   describe 'GET #index' do
     before do
       get :index
     end
 
     it 'responds successfully with 200' do
-      expect(response).to be_sucessful
       expect(response).to have_http_status(:ok)
     end
 
@@ -18,21 +21,16 @@ RSpec.describe RepresentativesController, type: :controller do
     end
 
     it 'loads all reps into @representatives' do
-      expect(assigns(:representatives)).to match_array(representatives)
+      expect(assigns(:representatives)).to match_array(representative)
     end
   end
 
   describe 'GET #show' do
-    let!(:representative) do
-      Representative.create!(name: 'John Doe', party: 'Independent', district: '1st', state: 'SomeState')
-    end
-
     before do
       get :show, params: { id: representative.id }
     end
 
     it 'responds successfully with 200' do
-      expect(response).to be_sucessful
       expect(response).to have_http_status(:ok)
     end
 
