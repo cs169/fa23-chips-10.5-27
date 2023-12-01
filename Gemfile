@@ -65,6 +65,7 @@ group :development, :test do
   # Report coverage.
   gem 'codecov', require: false
   gem 'simplecov'
+  gem 'webmock'
 end
 
 # Define a group which includes 'linters'
