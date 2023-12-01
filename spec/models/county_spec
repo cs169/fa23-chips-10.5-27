@@ -1,0 +1,9 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe County do
+  it 'returns'
+  end
+end
+
