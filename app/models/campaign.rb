@@ -22,6 +22,6 @@ class Campaign < ApplicationRecord
       "#{base_url}#{prm[:cycle]}/candidates/leaders/#{CATEGORIES[prm[:category]]}.json", nil, 'X-API-Key' => api_key
     )
     response = JSON.parse(request.body)
-    response['results'].map { |result| result['name'] }
+    response['results']
   end
 end
