@@ -3,22 +3,22 @@
 require 'rails_helper'
 
 RSpec.describe MapController, type: :controller do
+  before do
+    @california = State.create!({
+                                  name:         'California',
+                                  symbol:       'CA',
+                                  fips_code:    '06',
+                                  is_territory: false,
+                                  lat_min:      0.0,
+                                  lat_max:      1.0,
+                                  long_min:     0.0,
+                                  long_max:     1.0
+                                })
+
+    get :index
+  end
+
   describe 'GET index' do
-    before do
-      @california = State.create!({
-                                    name:         'California',
-                                    symbol:       'CA',
-                                    fips_code:    '06',
-                                    is_territory: false,
-                                    lat_min:      0.0,
-                                    lat_max:      1.0,
-                                    long_min:     0.0,
-                                    long_max:     1.0
-                                  })
-
-      get :index
-    end
-
     it 'renders the index template' do
       expect(response).to render_template(:index)
     end
@@ -34,19 +34,6 @@ RSpec.describe MapController, type: :controller do
   end
 
   describe 'GET state' do
-    before do
-      @california = State.create!({
-                                    name:         'California',
-                                    symbol:       'CA',
-                                    fips_code:    '06',
-                                    is_territory: false,
-                                    lat_min:      0.0,
-                                    lat_max:      1.0,
-                                    long_min:     0.0,
-                                    long_max:     1.0
-                                  })
-    end
-
     context 'with a valid state' do
       before { get :state, params: { 'state_symbol' => 'CA' } }
 
