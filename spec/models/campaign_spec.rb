@@ -14,7 +14,8 @@ RSpec.describe Campaign, type: :model do
     end
 
     it 'makes and API request and returns candidate names' do
-      expect(described_class.find_all(cycle: cycle, category: category)).to eq(['John Doe'])
+      result = described_class.find_all(cycle: cycle, category: category)
+      expect(result).to include(include('name' => 'John Doe'))
     end
   end
 end
