@@ -3,8 +3,6 @@
 require 'faraday'
 
 class Campaign < ApplicationRecord
-  has_many :news_items, dependent: :delete_all
-
   def self.find_all(prm)
     categories = {
       'Candidate Loan'      =>	'candidate-loan',
