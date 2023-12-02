@@ -14,7 +14,9 @@
                 %dl.row
                     %dt.col-sm-3.text-md-right Location:
                     %dt.col-sm-9
-                        "#{@event.county.name}, #{@event.state.symbol}"
+                        - county_display = @event.county ? @event.county.name : 'N/A'
+                        - state_display = @event.state ? @event.state.symbol : 'N/A'
+                        "#{county_display}, #{state_display}"
                 %dl.row
                     %dt.col-sm-3.text-md-right Start Time:
                     %dt.col-sm-9
