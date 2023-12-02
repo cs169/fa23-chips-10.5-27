@@ -12,7 +12,6 @@ FactoryBot.define do
 end
 
 RSpec.describe NewsItem, type: :model do
-
   describe '.issues' do
     it 'returns an array type' do
       expect(described_class.issues).to be_an_instance_of(Array)
